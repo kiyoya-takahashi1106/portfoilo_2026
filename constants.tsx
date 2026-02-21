@@ -84,7 +84,7 @@ export const PROFILE_DATA: ProfileData = {
       imageUrl: '/research/common_space.png',
       title: 'Common Space Learning Based on Representation Disentanglement for Zero-Shot Classification',
       description: 'CLIP系共通空間学習におけるInfoNCEの理論的限界に着目し、ZS分類に不要な情報の混在問題を明確化した。表現分離に基づき、必要な情報のみを用いる学習枠組みを提案し、5つの下流データセットにおいて一貫した性能向上を実証した。',
-      tags: ['Multimodal Learning', 'Zero-Shot Classification', 'CLIP', 'Contrastive Learning'],
+      tags: ['Common Space Learning', 'Zero-Shot Classification', 'CLIP', 'Contrastive Learning'],
       now: true
     }
   ],
