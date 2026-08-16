@@ -4,9 +4,11 @@ import { PROFILE_DATA } from '../constants';
 
 interface SidebarProps {
   activeSection: string;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeSection, isOpen = false, onClose }) => {
   const [copied, setCopied] = useState(false);
 
   const navItems = [
@@ -26,6 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
         top: top,
         behavior: 'smooth'
       });
+      onClose?.();
     }
   };
 
@@ -37,7 +40,11 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
   };
 
   return (
-    <aside className="hidden lg:flex fixed top-0 left-0 w-[280px] h-screen bg-[#0a0a0a] text-white flex-col border-r border-white/5 z-50 shadow-2xl">
+    <aside
+      className={`fixed top-0 left-0 z-50 flex h-screen w-[280px] max-w-[82vw] flex-col border-r border-white/5 bg-[#0a0a0a] text-white shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}
+    >
       <div className="pt-20 pb-12 px-6 text-center flex-shrink-0">
         <div className="relative inline-block">
           <div className="w-44 h-44 mx-auto rounded-none overflow-hidden border border-white/10 shadow-2xl group transition-all duration-500 bg-slate-900">

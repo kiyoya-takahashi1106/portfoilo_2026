@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
         {/* Affiliation Info */}
         <div className="space-y-4 text-white text-lg md:text-xl font-medium">
           <p>
-            所属学部 : <a 
+            所属研究科 : <a 
               href={PROFILE_DATA.departmentUrl} 
               target={PROFILE_DATA.departmentUrl.startsWith('http') ? "_blank" : "_self"} 
               rel="noopener noreferrer" 

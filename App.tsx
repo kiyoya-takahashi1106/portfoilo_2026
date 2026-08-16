@@ -8,6 +8,7 @@ import { PROFILE_DATA } from './constants';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +42,31 @@ const App: React.FC = () => {
 
   return (
     <div className="flex min-h-screen bg-white selection:bg-indigo-500/30">
-      <Sidebar activeSection={activeSection} />
+      <button
+        type="button"
+        onClick={() => setIsSidebarOpen(true)}
+        aria-label="Open navigation"
+        className="fixed right-4 top-4 z-40 flex h-11 w-11 flex-col items-center justify-center gap-1.5 border border-slate-200 bg-white/90 text-slate-900 shadow-lg backdrop-blur transition-all hover:border-slate-900 lg:hidden"
+      >
+        <span className="h-0.5 w-5 bg-current"></span>
+        <span className="h-0.5 w-5 bg-current"></span>
+        <span className="h-0.5 w-5 bg-current"></span>
+      </button>
+
+      {isSidebarOpen && (
+        <button
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => setIsSidebarOpen(false)}
+          className="fixed inset-0 z-40 bg-slate-950/45 backdrop-blur-[2px] lg:hidden"
+        />
+      )}
+
+      <Sidebar
+        activeSection={activeSection}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
       
       <main className="flex-1 lg:ml-[280px] w-full overflow-x-hidden">
         <Hero />
@@ -57,7 +82,7 @@ const App: React.FC = () => {
             
             <div className="grid grid-cols-1 gap-12 max-w-4xl mx-auto">
               {PROFILE_DATA.research.map((item) => (
-                <div key={item.id} className="group p-10 md:p-14 bg-white rounded-none shadow-sm border border-slate-200 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row gap-10 items-start relative">
+                <div key={item.id} className="group p-10 md:p-14 bg-white rounded-none shadow-sm border border-slate-200 hover:border-rose-200 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row gap-10 items-start relative">
                   
                   {item.now && (
                     <div className="absolute top-6 right-6 flex items-center gap-2">
@@ -70,7 +95,7 @@ const App: React.FC = () => {
                   )}
 
                   {/* Research Image (Diagram/Architecture) */}
-                  <div className="flex-shrink-0 w-full md:w-48 aspect-video md:aspect-square bg-slate-100 border border-slate-200 overflow-hidden group-hover:border-indigo-200 transition-colors">
+                  <div className="flex-shrink-0 w-full md:w-48 aspect-video md:aspect-square bg-slate-100 border border-slate-200 overflow-hidden group-hover:border-rose-100 transition-colors">
                     <img 
                       src={item.imageUrl} 
                       alt={item.title} 
@@ -79,7 +104,7 @@ const App: React.FC = () => {
                   </div>
 
                   <div className="flex-1">
-                    <h4 className="text-3xl font-bold mb-4 text-slate-900 group-hover:text-indigo-600 transition-colors">
+                    <h4 className="text-3xl font-bold mb-4 text-slate-900 group-hover:text-rose-500 transition-colors">
                       {item.title}
                     </h4>
                     <p className="text-slate-600 text-lg leading-relaxed mb-6">
@@ -92,8 +117,8 @@ const App: React.FC = () => {
                     </div>
                     
                     {item.link && (
-                      <div className="flex items-center text-sm font-bold text-slate-900 gap-2 cursor-pointer hover:gap-4 transition-all group/link">
-                        Learn More <span className="text-indigo-500">→</span>
+                      <div className="inline-flex w-fit items-center gap-1.5 border border-rose-100 bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-rose-400 transition-all group-hover:border-rose-200 group-hover:bg-rose-50 group-hover:text-rose-500">
+                        Learn More <span aria-hidden="true" className="text-xs leading-none">↗</span>
                         <a 
                           href={item.link} 
                           target="_blank" 
@@ -118,7 +143,7 @@ const App: React.FC = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {PROFILE_DATA.projects.map(project => (
-                <div key={project.id} className="group relative flex flex-col bg-white rounded-none border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-500">
+                <div key={project.id} className="group relative flex flex-col bg-white rounded-none border border-slate-200 overflow-hidden hover:border-rose-200 hover:shadow-2xl transition-all duration-500">
                   <div className="relative h-60 overflow-hidden">
                     <img 
                       src={project.imageUrl} 
@@ -128,18 +153,18 @@ const App: React.FC = () => {
                     <div className="absolute inset-0 bg-indigo-900/5 group-hover:bg-transparent transition-colors duration-500"></div>
                   </div>
                   <div className="p-8 flex-1 flex flex-col">
-                    <div className="flex gap-2 mb-4">
+                    <div className="flex flex-nowrap gap-1.5 mb-4 overflow-hidden whitespace-nowrap">
                       {project.tech.map(t => (
-                        <span key={t} className="text-[9px] font-bold px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-none uppercase tracking-wider border border-indigo-100">{t}</span>
+                        <span key={t} className="flex-shrink-0 text-[8px] font-bold px-1.5 py-0.5 bg-indigo-50 text-indigo-600 rounded-none uppercase tracking-normal border border-indigo-100">{t}</span>
                       ))}
                     </div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">{project.title}</h4>
+                    <h4 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-rose-500 transition-colors">{project.title}</h4>
                     <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-1">
                       {project.description}
                     </p>
                     {project.link && (
-                      <div className="flex items-center text-sm font-bold text-slate-900 gap-2 cursor-pointer hover:gap-4 transition-all group/link">
-                        Learn More <span className="text-indigo-500">→</span>
+                      <div className="inline-flex w-fit items-center gap-1.5 border border-rose-100 bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-rose-400 transition-all group-hover:border-rose-200 group-hover:bg-rose-50 group-hover:text-rose-500">
+                        Learn More <span aria-hidden="true" className="text-xs leading-none">↗</span>
                         <a 
                           href={project.link} 
                           target="_blank" 

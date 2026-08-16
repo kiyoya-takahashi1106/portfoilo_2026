@@ -27,9 +27,16 @@ const Others: React.FC = () => {
                     {qual.name}
                   </span>
                 </div>
-                <span className="text-xs text-slate-400 font-mono uppercase tracking-wider mt-1 md:mt-0">
-                  {qual.label}
-                </span>
+                <div className="flex flex-col items-start gap-1 mt-2 md:mt-0 md:items-end">
+                  <span className="text-xs text-slate-400 font-mono uppercase tracking-wider">
+                    {qual.label}
+                  </span>
+                  {qual.date && (
+                    <span className="text-xs font-mono font-bold text-indigo-500 tracking-tight">
+                      {qual.date}
+                    </span>
+                  )}
+                </div>
               </div>
             ))}
           </div>

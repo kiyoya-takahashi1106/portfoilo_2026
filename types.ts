@@ -25,10 +25,12 @@ export interface ChatMessage {
 
 export interface EducationWorkItem {
   type: 'Education' | 'Work';
+  shortWork?: 'true' | 'false';
   date: string;
   title: string;
   subtitle: string;
   logoUrl: string;
+  materialUrl?: string;
   tags?: string[];
   now?: boolean;
 }
@@ -36,7 +38,8 @@ export interface EducationWorkItem {
 export interface Qualification {
   name: string;
   label: string;
-  icon: string;
+  date?: string;
+  icon?: string;
 }
 
 export interface Skill {
