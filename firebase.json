@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "kiyoya-portfoilo",
     "public": "dist",
     "ignore": [
       "firebase.json",

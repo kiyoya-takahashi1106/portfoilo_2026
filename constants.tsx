@@ -33,7 +33,7 @@ export const PROFILE_DATA: ProfileData = {
       category: 'Job Hunting',
       date: '2026 / 5',
       title: '28卒で就活を行い始めます!!',
-      description: 'BizDev・Webエンジニア・AIエンジニアの職種で就活を行います。\n興味のある企業様はお気軽にご連絡ください。',
+      description: 'BizDev・Webエンジニア・AIエンジニアの職種で就活を行います。',
       link: '',
     },
     {
