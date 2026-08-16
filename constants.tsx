@@ -9,7 +9,7 @@ export const PROFILE_DATA: ProfileData = {
   profileImageUrl: "/profile.jpg",
   heroImageUrl: "/heroSection.jpg",
   universityName: "Ritsumeikan University",
-  departmentName: "立命館大学 情報理工研究科",
+  departmentName: "立命館 情報理工研究科",
   departmentUrl: "https://www.ritsumei.ac.jp/gsise/",
   labName: "知能画像処理研究室",
   labUrl: "https://media.ritsumei.ac.jp/iipl/",
@@ -18,6 +18,33 @@ export const PROFILE_DATA: ProfileData = {
     github: "https://github.com/kiyoya-takahashi1106",
     twitter: "https://x.com/kiyoya_1106",
   },
+
+  news: [
+    {
+      id: 'news-1',
+      category: 'Internship',
+      date: '2026 / 7',
+      title: 'Freee・Quickのインターン優勝!!',
+      description: 'ビジネスとエンジニア両方のインターンで優勝出来ました。',
+      link: '',
+    },
+    {
+      id: 'news-2',
+      category: 'Job Hunting',
+      date: '2026 / 5',
+      title: '28卒で就活を行い始めます!!',
+      description: 'BizDev・Webエンジニア・AIエンジニアの職種で就活を行います。\n興味のある企業様はお気軽にご連絡ください。',
+      link: '',
+    },
+    {
+      id: 'news-3',
+      category: 'Research',
+      date: '2026 / 4',
+      title: '4月から所属が立命館に移りました!!',
+      description: '情報欠損環境において、ロバスト性の高いMMモデルの研究を行う予定です。',
+      link: '',
+    },
+  ],
 
   educationWork: [
     {

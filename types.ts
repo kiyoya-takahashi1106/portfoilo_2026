@@ -54,6 +54,15 @@ export interface SocialLinks {
   linkedin?: string;
 }
 
+export interface NewsItem {
+  id: string;
+  category: string;
+  date?: string;
+  title: string;
+  description: string;
+  link?: string;
+}
+
 export interface ProfileData {
   name: string;
   englishName: string;
@@ -67,6 +76,7 @@ export interface ProfileData {
   labUrl: string;
   universityName: string;
   socialLinks: SocialLinks;
+  news: NewsItem[];
   projects: Project[];
   qualifications: Qualification[];
   research: ResearchItem[];
