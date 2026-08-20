@@ -18,14 +18,9 @@ export interface ResearchItem {
   now?: boolean;
 }
 
-export interface ChatMessage {
-  role: 'user' | 'assistant';
-  content: string;
-}
-
 export interface EducationWorkItem {
   type: 'Education' | 'Work';
-  shortWork?: 'true' | 'false';
+  shortWork?: boolean;
   date: string;
   title: string;
   subtitle: string;
@@ -40,12 +35,6 @@ export interface Qualification {
   label: string;
   date?: string;
   icon?: string;
-}
-
-export interface Skill {
-  name: string;
-  icon: string;
-  category: 'frontend' | 'backend' | 'tools';
 }
 
 export interface SocialLinks {
@@ -84,5 +73,4 @@ export interface ProfileData {
   // bio: string;
   // location: string;
   // experience: string;
-  skills: Skill[];
 }

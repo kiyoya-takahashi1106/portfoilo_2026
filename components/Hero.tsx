@@ -73,14 +73,20 @@ const Hero: React.FC = () => {
             <div className="grid border-b border-white/25">
               {newsItems.map((item, index) => {
                 const isActive = currentNewsIndex === index;
+                const hasLink = Boolean(item.link);
+                const NewsItemTag = hasLink ? 'a' : 'div';
 
                 return (
-                  <a
+                  <NewsItemTag
                     key={item.id}
-                    href={item.link}
-                    aria-label={item.link ? `${item.title}を詳しく見る` : undefined}
+                    {...(hasLink
+                      ? {
+                          href: item.link,
+                          'aria-label': `${item.title}を詳しく見る`,
+                        }
+                      : {})}
                     aria-hidden={!isActive}
-                    tabIndex={isActive && item.link ? 0 : -1}
+                    tabIndex={isActive && hasLink ? 0 : -1}
                     className={`group col-start-1 row-start-1 block py-4 transition-opacity duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-200 sm:py-5 ${
                       isActive ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
                     }`}
@@ -104,13 +110,13 @@ const Hero: React.FC = () => {
                           {item.description}
                         </p>
                       </div>
-                      {item.link && (
+                      {hasLink && (
                         <span className="mt-1 shrink-0 text-base text-rose-200 transition-transform group-hover:translate-x-1" aria-hidden="true">
                           ↗
                         </span>
                       )}
                     </div>
-                  </a>
+                  </NewsItemTag>
                 );
               })}
             </div>

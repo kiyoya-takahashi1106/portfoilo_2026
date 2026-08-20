@@ -12,8 +12,8 @@ const EducationWork: React.FC = () => {
   const filteredItems = PROFILE_DATA.educationWork.filter(item => {
     if (filter === 'All') return true;
     if (filter === 'Education') return item.type === 'Education';
-    if (filter === 'Short Work') return item.type === 'Work' && item.shortWork === 'true';
-    return item.type === 'Work' && item.shortWork !== 'true';
+    if (filter === 'Short Work') return item.type === 'Work' && item.shortWork;
+    return item.type === 'Work' && !item.shortWork;
   });
 
   return (
