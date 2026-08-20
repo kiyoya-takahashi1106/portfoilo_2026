@@ -9,7 +9,7 @@ import { usePortfolio } from './hooks/usePortfolio';
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { data: profileData } = usePortfolio();
+  const { data: profileData, error, isLoading } = usePortfolio();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +40,26 @@ const App: React.FC = () => {
     setTimeout(handleScroll, 100); 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white text-slate-900">
+        <p className="text-xs font-bold uppercase tracking-[0.35em] text-slate-500">Loading</p>
+      </div>
+    );
+  }
+
+  if (error || !profileData) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white px-6 text-center text-slate-900">
+        <div>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.35em] text-rose-500">Error</p>
+          <h1 className="text-2xl font-bold tracking-tight">Failed to load portfolio data.</h1>
+          {error && <p className="mt-4 text-sm text-slate-500">{error}</p>}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen bg-white selection:bg-indigo-500/30">

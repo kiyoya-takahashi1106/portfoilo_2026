@@ -9,7 +9,6 @@ import {
   ResearchItem,
   SocialLinks,
 } from '../types';
-import { FALLBACK_PORTFOLIO_DATA } from '../data/fallbackPortfolioData';
 import { getPublicAssetUrl } from './storageService';
 
 type ProfileRow = {
@@ -217,28 +216,21 @@ export const getQualifications = async (): Promise<Qualification[]> => {
 };
 
 export const getPortfolioData = async (): Promise<ProfileData> => {
-  if (!supabase) return FALLBACK_PORTFOLIO_DATA;
+  const [profile, news, educationWork, research, projects, qualifications] = await Promise.all([
+    getProfile(),
+    getNews(),
+    getEducationWork(),
+    getResearch(),
+    getProjects(),
+    getQualifications(),
+  ]);
 
-  try {
-    const [profile, news, educationWork, research, projects, qualifications] = await Promise.all([
-      getProfile(),
-      getNews(),
-      getEducationWork(),
-      getResearch(),
-      getProjects(),
-      getQualifications(),
-    ]);
-
-    return {
-      ...profile,
-      news,
-      educationWork,
-      research,
-      projects,
-      qualifications,
-    };
-  } catch (error) {
-    console.error('Failed to load portfolio data from Supabase.', error);
-    return FALLBACK_PORTFOLIO_DATA;
-  }
+  return {
+    ...profile,
+    news,
+    educationWork,
+    research,
+    projects,
+    qualifications,
+  };
 };

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { FALLBACK_PORTFOLIO_DATA } from '../data/fallbackPortfolioData';
 import { getPortfolioData } from '../services/portfolioService';
 import { ProfileData } from '../types';
 
 export const usePortfolio = () => {
-  const [data, setData] = useState<ProfileData>(FALLBACK_PORTFOLIO_DATA);
+  const [data, setData] = useState<ProfileData | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,7 +12,13 @@ export const usePortfolio = () => {
 
     getPortfolioData()
       .then((portfolioData) => {
-        if (isMounted) setData(portfolioData);
+        if (!isMounted) return;
+        setData(portfolioData);
+        setError(null);
+      })
+      .catch((loadError: unknown) => {
+        if (!isMounted) return;
+        setError(loadError instanceof Error ? loadError.message : 'Failed to load portfolio data.');
       })
       .finally(() => {
         if (isMounted) setIsLoading(false);
@@ -23,5 +29,5 @@ export const usePortfolio = () => {
     };
   }, []);
 
-  return { data, isLoading };
+  return { data, error, isLoading };
 };
