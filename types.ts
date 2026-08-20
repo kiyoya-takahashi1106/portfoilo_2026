@@ -1,4 +1,8 @@
 
+export type EducationWorkType = 'Education' | 'Work';
+
+export type NewsCategory = 'Internship' | 'Job Hunting' | 'Research';
+
 export interface Project {
   id: string;
   title: string;
@@ -19,7 +23,7 @@ export interface ResearchItem {
 }
 
 export interface EducationWorkItem {
-  type: 'Education' | 'Work';
+  type: EducationWorkType;
   shortWork?: boolean;
   date: string;
   title: string;
@@ -45,7 +49,7 @@ export interface SocialLinks {
 
 export interface NewsItem {
   id: string;
-  category: string;
+  category: NewsCategory;
   date?: string;
   title: string;
   description: string;
