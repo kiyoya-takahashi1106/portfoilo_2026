@@ -4,11 +4,12 @@ import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import EducationWork from './components/EducationWork';
 import Others from './components/Others';
-import { PROFILE_DATA } from './constants';
+import { usePortfolio } from './hooks/usePortfolio';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { data: profileData } = usePortfolio();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,14 +65,15 @@ const App: React.FC = () => {
 
       <Sidebar
         activeSection={activeSection}
+        profileData={profileData}
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
       />
       
       <main className="flex-1 lg:ml-[280px] w-full overflow-x-hidden">
-        <Hero />
+        <Hero profileData={profileData} />
         
-        <EducationWork />
+        <EducationWork profileData={profileData} />
 
         {/* Research Section */}
         <section id="research" className="py-32 px-6 bg-[#f8fafc] min-h-[500px] border-t border-slate-100">
@@ -81,7 +83,7 @@ const App: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 gap-12 max-w-4xl mx-auto">
-              {PROFILE_DATA.research.map((item) => (
+              {profileData.research.map((item) => (
                 <div key={item.id} className="group p-10 md:p-14 bg-white rounded-none shadow-sm border border-slate-200 hover:border-rose-200 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row gap-10 items-start relative">
                   
                   {item.now && (
@@ -142,7 +144,7 @@ const App: React.FC = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PROFILE_DATA.projects.map(project => (
+              {profileData.projects.map(project => (
                 <div key={project.id} className="group relative flex flex-col bg-white rounded-none border border-slate-200 overflow-hidden hover:border-rose-200 hover:shadow-2xl transition-all duration-500">
                   <div className="relative h-60 overflow-hidden">
                     <img 
@@ -180,16 +182,16 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <Others />
+        <Others profileData={profileData} />
 
         <footer className="h-[84px] px-6 border-t border-white/5 bg-[#0a0a0a] flex flex-col justify-center">
           <div className="max-w-4xl mx-auto text-center w-full">
             <div className="w-6 h-[1px] bg-indigo-500/50 mx-auto mb-2"></div>
             <p className="text-slate-500 text-[10px] font-mono tracking-[0.2em] uppercase">
-              © {new Date().getFullYear()} {PROFILE_DATA.englishName}. All Rights Reserved.
+              © {new Date().getFullYear()} {profileData.englishName}. All Rights Reserved.
             </p>
             <p className="text-slate-600 text-[8px] mt-1 tracking-widest uppercase opacity-40 font-bold">
-              {PROFILE_DATA.universityName} {PROFILE_DATA.labName}
+              {profileData.universityName} {profileData.labName}
             </p>
           </div>
         </footer>

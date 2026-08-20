@@ -1,15 +1,19 @@
 
 import React, { useState } from 'react';
-import { PROFILE_DATA } from '../constants';
+import { ProfileData } from '../types';
 
 type EducationWorkFilter = 'All' | 'Education' | 'Short Work' | 'Middle・Long Work';
 
 const FILTERS: EducationWorkFilter[] = ['All', 'Education', 'Short Work', 'Middle・Long Work'];
 
-const EducationWork: React.FC = () => {
+interface EducationWorkProps {
+  profileData: ProfileData;
+}
+
+const EducationWork: React.FC<EducationWorkProps> = ({ profileData }) => {
   const [filter, setFilter] = useState<EducationWorkFilter>('All');
 
-  const filteredItems = PROFILE_DATA.educationWork.filter(item => {
+  const filteredItems = profileData.educationWork.filter(item => {
     if (filter === 'All') return true;
     if (filter === 'Education') return item.type === 'Education';
     if (filter === 'Short Work') return item.type === 'Work' && item.shortWork;

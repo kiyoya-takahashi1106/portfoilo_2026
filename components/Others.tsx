@@ -1,8 +1,12 @@
 
 import React from 'react';
-import { PROFILE_DATA } from '../constants';
+import { ProfileData } from '../types';
 
-const Others: React.FC = () => {
+interface OthersProps {
+  profileData: ProfileData;
+}
+
+const Others: React.FC<OthersProps> = ({ profileData }) => {
   return (
     <section id="others" className="py-24 px-6 bg-[#f8fafc] border-t border-slate-100">
       <div className="max-w-4xl mx-auto">
@@ -16,7 +20,7 @@ const Others: React.FC = () => {
           </h3>
           
           <div className="space-y-6">
-            {PROFILE_DATA.qualifications.map((qual, index) => (
+            {profileData.qualifications.map((qual, index) => (
               <div 
                 key={index} 
                 className="flex flex-col md:flex-row md:items-center justify-between group py-2"

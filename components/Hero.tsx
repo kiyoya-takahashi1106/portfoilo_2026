@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { PROFILE_DATA } from '../constants';
+import { ProfileData } from '../types';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  profileData: ProfileData;
+}
+
+const Hero: React.FC<HeroProps> = ({ profileData }) => {
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const newsItems = PROFILE_DATA.news;
+  const newsItems = profileData.news;
 
   useEffect(() => {
     if (isPaused || newsItems.length < 2) return;
@@ -32,7 +36,7 @@ const Hero: React.FC = () => {
     <section id="home" className="relative min-h-[100svh] overflow-hidden bg-black">
       <div className="absolute inset-0 z-0">
         <img
-          src={PROFILE_DATA.heroImageUrl}
+          src={profileData.heroImageUrl}
           alt="Hero Background"
           className="h-full w-full object-cover"
         />
@@ -42,16 +46,16 @@ const Hero: React.FC = () => {
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-12 pt-[28svh] sm:px-8 md:px-16">
         <div className="mb-4">
           <p className="text-lg font-medium tracking-tight text-white md:text-xl">
-            {PROFILE_DATA.role} {PROFILE_DATA.name}
+            {profileData.role} {profileData.name}
           </p>
         </div>
 
         <h1 className="mb-2 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl lg:text-8xl">
-          {PROFILE_DATA.englishName}
+          {profileData.englishName}
         </h1>
 
         <p className="text-base font-light text-white/80 sm:text-lg md:text-xl">
-          {PROFILE_DATA.email}
+          {profileData.email}
         </p>
 
         {currentNews && (
