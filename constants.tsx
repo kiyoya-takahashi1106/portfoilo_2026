@@ -26,7 +26,6 @@ export const PROFILE_DATA: ProfileData = {
       date: '2026 / 7',
       title: 'Freee・Quickのインターン優勝!!',
       description: 'ビジネスとエンジニア両方のインターンで優勝出来ました。',
-      link: '',
     },
     {
       id: 'news-2',
@@ -34,7 +33,6 @@ export const PROFILE_DATA: ProfileData = {
       date: '2026 / 5',
       title: '28卒で就活を行い始めます!!',
       description: 'BizDev・Webエンジニア・AIエンジニアの職種で就活を行います。',
-      link: '',
     },
     {
       id: 'news-3',
@@ -42,14 +40,13 @@ export const PROFILE_DATA: ProfileData = {
       date: '2026 / 4',
       title: '4月から所属が立命館に移りました!!',
       description: '情報欠損環境において、ロバスト性の高いMMモデルの研究を行う予定です。',
-      link: '',
     },
   ],
 
   educationWork: [
     {
       type: 'Education',
-      shortWork: 'false',
+      shortWork: false,
       date: '2022 / 4 ~ 2026 / 3',
       title: 'Osaka Institute of Technology',
       subtitle: 'System Design, Bachelor Student',
@@ -59,7 +56,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       type: 'Work',
-      shortWork: 'false',
+      shortWork: false,
       date: '2024 / 4 ~ 2025 / 2',
       title: 'Teacher Assistant in OIT',
       subtitle: 'Programming I・IV (Python)',
@@ -70,7 +67,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       type: 'Education',
-      shortWork: 'false',
+      shortWork: false,
       date: '2024 / 9 ~ 2026 / 3',
       title: 'Computational Intelligence Lab in OIT',
       subtitle: 'Deep Learning & Computational Intelligence',
@@ -80,7 +77,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       type: 'Work',
-      shortWork: 'false',
+      shortWork: false,
       date: '2025 / 2 ~ 2025 / 5',
       title: 'AI Engineer in Skill Systems',
       subtitle: 'ガン早期発見プロジェクト, 基本実装, 基盤モデル選定',
@@ -91,7 +88,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       type: 'Work',
-      shortWork: 'false',
+      shortWork: false,
       date: '2025 / 3 / 3  ~ 14',
       title: 'Server side Engineer in brightech',
       subtitle: '食事共有SNSの要件定義, API設計',
@@ -102,7 +99,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     { 
       type: 'Work',
-      shortWork: 'false',
+      shortWork: false,
       date: '2025 / 12 ~ ',
       title: 'AI Engineer in Treee',
       subtitle: '展示会コンサル営業, クライアント商談, プロトタイプ開発',
@@ -113,7 +110,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       type: 'Education',
-      shortWork: 'false',
+      shortWork: false,
       date: '2026 / 4 ~ ',
       title: 'Ritsumeikan University',
       subtitle: 'Information science and engineering, Master Student',
@@ -123,7 +120,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     {
       type: 'Education',
-      shortWork: 'false',
+      shortWork: false,
       date: '2026 / 4 ~ ',
       title: 'Computational Intelligence Lab in Ritsumeikan',
       subtitle: 'Intelligent image processing, Deep learning',
@@ -133,7 +130,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     { 
       type: 'Work',
-      shortWork: 'false',
+      shortWork: false,
       date: '2026 / 5 / 13 ~ 6 / 5',
       title: 'Web Engineer in Degital Garage',
       subtitle: '顔タイプ診断アプリ, 要件定義, 設計, 実装',
@@ -144,7 +141,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     { 
       type: 'Work',
-      shortWork: 'true',
+      shortWork: true,
       date: '2026 / 7 / 2 ・ 3',
       title: 'BizDev in freee',
       subtitle: 'Dayサービス事業に対する営業戦略',
@@ -154,7 +151,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     { 
       type: 'Work',
-      shortWork: 'true',
+      shortWork: true,
       date: '2026 / 8 / 1 ~ 3',
       title: 'Web Engineer in Quick',
       subtitle: '学生団体向け管理サービス, 課題発見, 要件定義, 設計, 実装',
@@ -165,7 +162,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     { 
       type: 'Work',
-      shortWork: 'true',
+      shortWork: true,
       date: '2026 / 8 / 6 ・ 7',
       title: 'BizDev in stores',
       subtitle: '5年後の店舗経営, 経営の相棒AI',
@@ -175,7 +172,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     { 
       type: 'Work',
-      shortWork: 'true',
+      shortWork: true,
       date: '2026 / 8 / 8 ~ 10',
       title: 'Markting in itsumo',
       subtitle: 'ONアパレルマーケティング戦略',
@@ -185,7 +182,7 @@ export const PROFILE_DATA: ProfileData = {
     },
     { 
       type: 'Work',
-      shortWork: 'true',
+      shortWork: true,
       date: '2026 / 8 / 12 ~ 14',
       title: 'Web Engineer in PRTimes',
       subtitle: 'メディアリスト自動生成機能, 商談ヒアリング, 要件定義, 設計, 実装',
